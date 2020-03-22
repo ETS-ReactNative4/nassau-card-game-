@@ -1,0 +1,164 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.card {
+  width: 190px;
+  padding: 0.5em;
+  margin: 0.5em;
+  border: 1px solid black;
+  border-radius: 5%;
+  background-color: white;
+}
+
+h4 {
+  text-align: center;
+}
+
+.card-hidden {
+  height: 100px;
+  background-color: gray;
+}
+
+.card p {
+  margin: 3px;
+}
+
+.card-unbooted {
+  background-color: gray;
+}
+
+.stats {
+  margin-bottom: 0.6em;
+  text-align: center;
+}
+
+.stats .icon {
+  position: relative;
+  top: 5px;
+}
+
+.stat {
+  font-size: 2em;
+  margin-right: 0.3em;
+}
+
+.stat.highlight {
+  color: red;
+}
+
+.routine {
+  font-family: monospace;
+  background-color: black;
+  color: white;
+  padding: 0.5em;
+}
+
+.board {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  width: 100%;
+}
+
+#hand-player {
+  background-color: palegreen;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-player {
+  background-color: palegreen;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#hand-opponent {
+  background-color: salmon;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-opponent {
+  background-color: salmon;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#hand-player_0 {
+  background-color: #AF7AC5;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-player_0 {
+  background-color: #AF7AC5;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#hand-player_1 {
+  background-color: #EC7063;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-player_1 {
+  background-color: #EC7063;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-player_2 {
+  background-color: #5499C7;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+#field-player_3 {
+  background-color: #58D68D;
+  height: 1000px;
+  min-width: 140px;
+  border: 2px solid black;
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
