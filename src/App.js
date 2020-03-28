@@ -10,6 +10,7 @@ const NassauCardGame = Game({
   setup: GameLogic.initialState,
   moves: {
     drawCard: GameLogic.drawCard,
+    trashCard: GameLogic.trashCard,
     playCard: GameLogic.playCard
   },
   flow: {
@@ -18,6 +19,7 @@ const NassauCardGame = Game({
 });
 
 const App = new Client({
+  numPlayers: 4,
   game: NassauCardGame,
   board: GameRender
 });

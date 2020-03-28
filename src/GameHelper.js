@@ -80,6 +80,17 @@ class GameHelper {
         let newPlayerState = Object.assign({}, this.state[playerId], playerState);
         return {...this.state, [playerId]: newPlayerState};
     }
+
+    shuffleArray(input) {
+        let output = input;
+        for (let i = output.length - 1; i >= 0; i--) {     
+          let randomIndex = Math.floor(Math.random() * (i + 1));
+          let itemAtIndex = output[randomIndex];
+          output[randomIndex] = output[i];
+          output[i] = itemAtIndex;
+        }
+        return output;
+    }
 }
 
 const ImmutableArray = {

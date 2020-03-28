@@ -1,25 +1,39 @@
 import React from 'react';
 import {GameHelper} from './GameHelper';
 
-function TriggeredRoutine(props) {
-    return <pre className="routine">{props.routine.text}</pre>;
-}
-
 function Card(props) {
     const {id, proto, booted} = props.card;
     const {getProp} = GameHelper;
-    const title = getProp(props.card, 'Title').replace(/(?:\r\n|\r|\n)/g, '<br />');
+    const title = getProp(props.card, 'Title');
     const actionSuccess = getProp(props.card, 'ActionSuccess');
+    const indexAction = title.indexOf(">");
+    const actionType = title.substring(0,indexAction)
     const failure = getProp(props.card, 'Failure');
-    return <div className={`card card-${proto.category} card-${props.zone !== 'hand' ? 'booted' : 'unbooted'}`}>
+    const additionalButtons = [];
+    if (props.zone === 'hand') {
+        additionalButtons.push(<button className="card-button" key="play" onClick={props.onPlay}>PREPARAR ACCION y TERMINAR</button>);
+    }
+    if (props.zone === 'field') {
+        additionalButtons.push(<button className="card-button" key="play" onClick={props.onTryDiscard}>HACER TIRADA</button>);
+    }   
+    return <div className={`card card-${actionType} card-${props.zone !== 'hand' ? 'booted' : 'unbooted'}`}>
+        {additionalButtons}
         <p style={{fontWeight: "bold"}}>{title}</p>
         <p>{actionSuccess}</p>
         <p style={{color:"#641E16"}}>{failure}</p>        
     </div>;
 }
 
-function HiddenCard(props) {
-    return <div className="card card-hidden"></div>
+class Attribute extends React.Component {
+    render() {
+        let {desc, value} = this.props;
+
+        return (
+          <span>
+            <center><b>{desc}............................</b>+{value}</center>
+          </span>
+        );
+    }
 }
 
 class Stat extends React.Component {
@@ -59,13 +73,24 @@ class Stat extends React.Component {
 class GameRender extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {}
         this.playCard = this.playCard.bind(this);
+        this.onDraw = this.onDraw.bind(this);
+        this.onEndTurn = this.onEndTurn.bind(this);
     }
 
     playCard(cardId) {
         this.props.moves.playCard(cardId);
     }
+
+    onDraw () {
+        this.props.moves.drawCard();
+        this.props.events.endTurn();
+    };
+
+    onEndTurn () {
+        this.props.events.endTurn();
+    };
 
     // Split the card rendering into it's own function.
     // I've also added buttons for the attacks.
@@ -73,7 +98,8 @@ class GameRender extends React.Component {
         let card = this.props.G.cards[cardId];
         let onPlay = () => {
             this.playCard(cardId);
-        };
+            this.props.events.endTurn();
+        };        
         return <Card 
             key={cardId} 
             card={card} 
@@ -98,19 +124,47 @@ class GameRender extends React.Component {
         const opponentField2 = opponentPlayer[2].field.map(c => this.renderCard(c, 'field', 'enemy'));        
 
         return <div>
+            <div className="head">
+            FUErza: Combate cuerpo a cuerpo, decisivo en abordaje de barcos y para recuperarse de las heridas<br></br>
+            NAVegación: Para buscar y dar caza a barcos mercantes o encontrar islas en los mapas<br></br>            
+            BAJos fondos: Para conseguir tripulación y tratar con piratas y escoria de similar ralea<br></br>
+            LIDerazgo: Para conseguir poderosos aliados y tratar con los nobles y la corona inglesa<br></br>
+            NEGociación: Para sacar mejores resultados económicos al comprar, vender, sobornar...<br></br>
+            OBServación: Encontrar pistas, secretos de otros y formas de apropiarse de objetos poco vigilados<br></br>
+            </div>
             <div className="board">
                 <div id={"hand-"+playerId} >
-                    <h4>{playerId}</h4>
+                    <h2>{currentPlayer.name}</h2>
+                    <div className={"stats-"+playerId}>
+                        <Attribute desc="FUE" value={currentPlayer.FUE}/>
+                        <Attribute desc="NAV" value={currentPlayer.NAV}/>                       
+                        <Attribute desc="BAJ" value={currentPlayer.BAJ}/>
+                        <Attribute desc="LID" value={currentPlayer.LID}/>
+                        <Attribute desc="NEG" value={currentPlayer.NEG}/>
+                        <Attribute desc="OBS" value={currentPlayer.OBS}/>                        
+                    </div>
                     <div className="stats">
                         <Stat icon="GoldCoin" value={currentPlayer.goldCoin} />
                         <Stat icon="VictoryPoint" value={currentPlayer.victoryPoints} />
                         <Stat icon="HandCards" value={currentPlayer.hand.length} />
                     </div>
+                    <button className="card-button-header" key="draw" onClick={this.onDraw}>BUSCAR OPCIONES y TERMINAR</button>
                     {playerHand}
                 </div>
-                <div id={"field-"+playerId}>{playerField}</div>
+                <div id={"field-"+playerId}>
+                    {playerField}
+                    <button className="card-button-header" key="end" onClick={this.onEndTurn}>PASAR TURNO</button>
+                </div>
                 <div id={"field-"+opponentPlayerId[0]}>
-                    <h4>{opponentPlayerId[0]}</h4>
+                    <h2>{opponentPlayer[0].name}</h2>
+                    <div className={"stats-"+opponentPlayerId[0]}>
+                        <Attribute desc="FUE" value={opponentPlayer[0].FUE}/>
+                        <Attribute desc="NAV" value={opponentPlayer[0].NAV}/>                       
+                        <Attribute desc="BAJ" value={opponentPlayer[0].BAJ}/>
+                        <Attribute desc="LID" value={opponentPlayer[0].LID}/>
+                        <Attribute desc="NEG" value={opponentPlayer[0].NEG}/>
+                        <Attribute desc="OBS" value={opponentPlayer[0].OBS}/>                        
+                    </div>
                     <div className="stats">
                         <Stat icon="GoldCoin" value={opponentPlayer[0].goldCoin} />
                         <Stat icon="VictoryPoint" value={opponentPlayer[0].victoryPoints} />
@@ -119,7 +173,15 @@ class GameRender extends React.Component {
                     {opponentField0}
                 </div>
                 <div id={"field-"+opponentPlayerId[1]}>
-                    <h4>{opponentPlayerId[1]}</h4>
+                    <h2>{opponentPlayer[1].name}</h2>
+                    <div className={"stats-"+opponentPlayerId[1]}>
+                        <Attribute desc="FUE" value={opponentPlayer[1].FUE}/>
+                        <Attribute desc="NAV" value={opponentPlayer[1].NAV}/>                       
+                        <Attribute desc="BAJ" value={opponentPlayer[1].BAJ}/>
+                        <Attribute desc="LID" value={opponentPlayer[1].LID}/>
+                        <Attribute desc="NEG" value={opponentPlayer[1].NEG}/>
+                        <Attribute desc="OBS" value={opponentPlayer[1].OBS}/>                        
+                    </div>                    
                     <div className="stats">
                         <Stat icon="GoldCoin" value={opponentPlayer[1].goldCoin} />
                         <Stat icon="VictoryPoint" value={opponentPlayer[1].victoryPoints} />
@@ -128,7 +190,15 @@ class GameRender extends React.Component {
                     {opponentField1}
                 </div>
                 <div id={"field-"+opponentPlayerId[2]}>
-                    <h4>{opponentPlayerId[2]}</h4>
+                    <h2>{opponentPlayer[2].name}</h2>
+                    <div className={"stats-"+opponentPlayerId[2]}>
+                        <Attribute desc="FUE" value={opponentPlayer[2].FUE}/>
+                        <Attribute desc="NAV" value={opponentPlayer[2].NAV}/>                       
+                        <Attribute desc="BAJ" value={opponentPlayer[2].BAJ}/>
+                        <Attribute desc="LID" value={opponentPlayer[2].LID}/>
+                        <Attribute desc="NEG" value={opponentPlayer[2].NEG}/>
+                        <Attribute desc="OBS" value={opponentPlayer[2].OBS}/>                        
+                    </div>                    
                     <div className="stats">
                         <Stat icon="GoldCoin" value={opponentPlayer[2].goldCoin} />
                         <Stat icon="VictoryPoint" value={opponentPlayer[2].victoryPoints} />
