@@ -21,7 +21,8 @@ const NassauCardGame = Game({
 const App = new Client({
   numPlayers: 4,
   game: NassauCardGame,
-  board: GameRender
+  board: GameRender,
+  debug: false
 });
 
 export default App;

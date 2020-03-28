@@ -2,7 +2,6 @@ import React from 'react';
 import {GameHelper} from './GameHelper';
 
 function Card(props) {
-    const {id, proto, booted} = props.card;
     const {getProp} = GameHelper;
     const title = getProp(props.card, 'Title');
     const actionSuccess = getProp(props.card, 'ActionSuccess');
@@ -13,7 +12,7 @@ function Card(props) {
     if (props.zone === 'hand') {
         additionalButtons.push(<button className="card-button" key="play" onClick={props.onPlay}>PREPARAR ACCION y TERMINAR</button>);
     }
-    if (props.zone === 'field') {
+    if (props.zone === 'field' || props.zone === 'fieldP') {
         additionalButtons.push(<button className="card-button" key="play" onClick={props.onTryDiscard}>HACER TIRADA</button>);
     }   
     return <div className={`card card-${actionType} card-${props.zone !== 'hand' ? 'booted' : 'unbooted'}`}>
@@ -75,12 +74,17 @@ class GameRender extends React.Component {
         super(props);
         this.state = {}
         this.playCard = this.playCard.bind(this);
+        this.playCardP = this.playCardP.bind(this);
         this.onDraw = this.onDraw.bind(this);
         this.onEndTurn = this.onEndTurn.bind(this);
     }
 
     playCard(cardId) {
         this.props.moves.playCard(cardId);
+    }
+
+    playCardP(cardId) {
+        this.props.moves.playCardP(cardId);
     }
 
     onDraw () {
@@ -95,16 +99,19 @@ class GameRender extends React.Component {
     // Split the card rendering into it's own function.
     // I've also added buttons for the attacks.
     renderCard(cardId, zone, team) {
-        let card = this.props.G.cards[cardId];
-        let onPlay = () => {
-            this.playCard(cardId);
-            this.props.events.endTurn();
-        };        
+        let card = this.props.G.cards[cardId];       
         return <Card 
             key={cardId} 
             card={card} 
-            zone={zone}
-            onPlay={onPlay}/>
+            zone={zone}/>
+    }
+
+    renderCardP(cardId, zone, team) {
+        let cardP = this.props.G.cardsP[cardId];        
+        return <Card 
+            key={cardId} 
+            card={cardP} 
+            zone={zone}/>
     }
 
     render() {
@@ -118,6 +125,12 @@ class GameRender extends React.Component {
         // Create an array of <div> for each card in the player hand.
         // React allows JSX. I can combine HTML and Javascript in the same file.
         const playerHand = currentPlayer.hand.map(c => this.renderCard(c, 'hand', 'friendly'));
+
+        const playerFieldP = currentPlayer.fieldP.map(c => this.renderCardP(c, 'fieldP', 'friendly'));
+        const opponentFieldP0 = opponentPlayer[0].fieldP.map(c => this.renderCardP(c, 'fieldP', 'enemy'));
+        const opponentFieldP1 = opponentPlayer[1].fieldP.map(c => this.renderCardP(c, 'fieldP', 'enemy'));
+        const opponentFieldP2 = opponentPlayer[2].fieldP.map(c => this.renderCardP(c, 'fieldP', 'enemy'));
+
         const playerField = currentPlayer.field.map(c => this.renderCard(c, 'field', 'friendly'));
         const opponentField0 = opponentPlayer[0].field.map(c => this.renderCard(c, 'field', 'enemy'));
         const opponentField1 = opponentPlayer[1].field.map(c => this.renderCard(c, 'field', 'enemy'));
@@ -148,10 +161,16 @@ class GameRender extends React.Component {
                         <Stat icon="VictoryPoint" value={currentPlayer.victoryPoints} />
                         <Stat icon="HandCards" value={currentPlayer.hand.length} />
                     </div>
-                    <button className="card-button-header" key="draw" onClick={this.onDraw}>BUSCAR OPCIONES y TERMINAR</button>
+                    <div className="stats">
+                    <button className="card-button" key="play" onClick={this.onAddCoin}>RECIBIR 1mo</button>
+                    <button className="card-button" key="play" onClick={this.onSubCoin}>PAGAR 1mo</button>
+                    <button className="card-button" key="play" onClick={this.onWinPoint}>GANAR 1PV</button>
+                    </div>
+                    <button className="card-button-header" key="draw" onClick={this.onDraw}>BUSCAR OPCIONES y TERMINAR</button>                    
                     {playerHand}
                 </div>
                 <div id={"field-"+playerId}>
+                    {playerFieldP}
                     {playerField}
                     <button className="card-button-header" key="end" onClick={this.onEndTurn}>PASAR TURNO</button>
                 </div>
@@ -170,6 +189,7 @@ class GameRender extends React.Component {
                         <Stat icon="VictoryPoint" value={opponentPlayer[0].victoryPoints} />
                         <Stat icon="HandCards" value={opponentPlayer[0].hand.length} />
                     </div> 
+                    {opponentFieldP0}
                     {opponentField0}
                 </div>
                 <div id={"field-"+opponentPlayerId[1]}>
@@ -186,7 +206,8 @@ class GameRender extends React.Component {
                         <Stat icon="GoldCoin" value={opponentPlayer[1].goldCoin} />
                         <Stat icon="VictoryPoint" value={opponentPlayer[1].victoryPoints} />
                         <Stat icon="HandCards" value={opponentPlayer[1].hand.length} />
-                    </div> 
+                    </div>
+                    {opponentFieldP1}
                     {opponentField1}
                 </div>
                 <div id={"field-"+opponentPlayerId[2]}>
@@ -203,7 +224,8 @@ class GameRender extends React.Component {
                         <Stat icon="GoldCoin" value={opponentPlayer[2].goldCoin} />
                         <Stat icon="VictoryPoint" value={opponentPlayer[2].victoryPoints} />
                         <Stat icon="HandCards" value={opponentPlayer[2].hand.length} />
-                    </div> 
+                    </div>
+                    {opponentFieldP2}
                     {opponentField2}
                 </div>                                
             </div>

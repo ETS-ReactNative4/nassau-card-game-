@@ -1,102 +1,93 @@
 // file: src/GameLogic.js
 import NassauCards from './NassauCardList.json';
+import NassauCardsP from './NassauCardListPermanent.json';
 import {GameHelper, ImmutableArray} from './GameHelper';
 //import {GameEvents, GameEventValidator} from './GameEvents';
 
 function initialState(ctx, state) {
     let cards = [];
+    let cardsP = [];
     for (let index = 0; index < NassauCards.length; index++) {
         cards.push({
             id: index,
             proto: NassauCards[index]
         });
     }
+    for (let index = 0; index < NassauCardsP.length; index++) {
+        cardsP.push({
+            id: index,
+            proto: NassauCardsP[index]
+        });
+    }    
     let actionDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
+    let permanentDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
     let helper = new GameHelper(state, ctx);
     actionDeck = helper.shuffleArray(actionDeck);
     let initialState = state || {
         actionDeck,
+        permanentDeck,
         player_0: {
             id: 0,
             name: 'Jhon Silver',          
             hand: [27, 38],
-            field: [30],
+            fieldP: [7],
+            field: [],
             goldCoin: 1,
             victoryPoints: 0,
             FUE: 0,
             NAV: 0,
             NEG: 0,
-            BAJ: 1,
+            BAJ: 2,
             LID: 0,
-            OBS: 1,
-            grantFUE: [true, true, false, false],
-            grantNAV: [false, false, false, false],
-            grantNEG: [false, false, false, false],
-            grantBAJ: [false, false, false, false],
-            grantLID: [false, false, false, false],
-            grantOBS: [false, false, false, false]
+            OBS: 1
         },
         player_1: {
             id: 1,
             name: 'Eleanor Guthrie',
             hand: [22],
-            field: [12, 19],
+            fieldP: [4, 6],
+            field: [],
             goldCoin: 1,
             victoryPoints: 0,
             FUE: 0,
             NAV: 0,
-            NEG: 1,
+            NEG: 2,
             BAJ: 0,
             LID: 1,
-            OBS: 0,
-            grantFUE: [false, false, false, false],
-            grantNAV: [false, false, false, false],
-            grantNEG: [false, false, false, false],
-            grantBAJ: [false, false, false, false],
-            grantLID: [false, false, false, false],
-            grantOBS: [false, false, false, false]
+            OBS: 0
         },
         player_2: {
             id: 2,
-            name: 'Capitán Flint',
+            name: 'Cpt Flint',
             hand: [],
-            field: [11, 18],
+            fieldP: [5],
+            field: [],
             goldCoin: 1,
             victoryPoints: 0,
             FUE: 0,
-            NAV: 2,
+            NAV: 3,
             NEG: 0,
             BAJ: 0,
             LID: 0,
-            OBS: 0,
-            grantFUE: [false, false, false, false],
-            grantNAV: [false, false, false, false],
-            grantNEG: [false, false, false, false],
-            grantBAJ: [false, false, false, false],
-            grantLID: [false, false, false, false],
-            grantOBS: [false, false, false, false]
+            OBS: 0
         },
         player_3: {
             id: 3,
-            name: 'Capitán Charles Vane',
+            name: 'Cpt Charles Vane',
             hand: [],
-            field: [13,21],
+            fieldP: [8],
+            field: [],
             goldCoin: 1,
             victoryPoints: 0,
-            FUE: 2,
+            FUE: 3,
             NAV: 0,
             NEG: 0,
             BAJ: 0,
             LID: 0,
-            OBS: 0,
-            grantFUE: [false, false, false, false],
-            grantNAV: [false, false, false, false],
-            grantNEG: [false, false, false, false],
-            grantBAJ: [false, false, false, false],
-            grantLID: [false, false, false, false],
-            grantOBS: [false, false, false, false]
+            OBS: 0
         },                
-        cards
+        cards,
+        cardsP
     };
     const zones = ['hand', 'field'];
     const players = ['player_0', 'player_1',  'player_2',  'player_3'];
@@ -149,6 +140,24 @@ function playCard(currentState, ctx, cardId) {
         let state = helper.constructStateForPlayer(playerId, {hand, field});
         return state;
     } 
+}
+
+function playCardP(currentState, ctx, cardName) {
+    let helper = new GameHelper(currentState, ctx);
+    let playerId = "player_" + ctx.currentPlayer;
+    let player = currentState[playerId];
+    // Add the last card in the player's deck to their hand.
+    let deckIndex = 0; //TODO: Fer que busque el cardName en el deck de cartes perm
+
+    let cardId = currentState.permanentDeck[deckIndex];
+    let fieldP = ImmutableArray.append(player.fieldP, cardId);
+    helper.updateCardLocation(cardId, {playerId, zone: 'fieldP'});
+    // Remove the last card in the deck.
+    currentState.permanentDeck = ImmutableArray.removeAt(currentState.permanentDeck, deckIndex);
+    helper.updateState(currentState);
+    // Construct and return a new state object with our changes.
+    let state = {...state, currentState};
+    return state;
 }
 
 function trashCard(currentState, ctx, cardId) {

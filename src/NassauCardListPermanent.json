@@ -1,0 +1,401 @@
+[
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PE1> Armada Real",
+    "ActionSuccess": "Lid/10+> Elimina esta carta y todas las Tripulaciones en juego",
+    "Failure": "Ponle esta carta a otro personaje. Aplica -2/Fue y -2/Nav a todos los personajes",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PE> Tripulación favorable",
+    "ActionSuccess": "Baj/5+> Coge [Barco]",
+    "Failure": "Ponle [Promocionar a capitán] a otro personaje",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PE> Tripulación favorable",
+    "ActionSuccess": "Lid/5+> Elimina una carta de [Herido] de tu personaje",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PE> Tripulación favorable",
+    "ActionSuccess": "Obs/6+> Coge [Cañones largo alcance] y elimina esta carta",
+    "Failure": "Ponle [Cañones largo alcance] a otro personaje y elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPL1",
+    "Title": "PL1> Burdel",
+    "ActionSuccess": "Obs/9+ (Elige un personaje con Mercancia)> Cógele una [Mercancia]",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPL1",
+    "Title": "PL1> Fortaleza",
+    "ActionSuccess": "Lid/9+ (Elige un personaje con Barco)> Elimina su [Barco]",
+    "Failure": "Si no tienes [Tripulación desfavorable] cógela y si ya la tienes coge [Denunciado por piratería]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPL1",
+    "Title": "PL1> Puesto comercial",
+    "ActionSuccess": "Lid/7+ (Elige un personaje con Mercancia)> Elimina la [Mercancia] y ponle 2mo. Recibes 1mo si la Mercancia era de otro jugador",
+    "Failure": "Coge [Desordenes en Nassau]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPL1",
+    "Title": "PL1> Taberna",
+    "ActionSuccess": "Neg/8+ (Elige un personaje con más de 2mo)> Cógele 1mo",
+    "Failure": "Ponle [Cambiar de propietario] a otro personaje",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPL1",
+    "Title": "PL1> Gruta secreta!",
+    "ActionSuccess": "Baj/5+ (Paga 3mo)> Elimina una de tus cartas de Situación(S) para ganar 1PV",
+    "Failure": "Elimina todas las Acciones(A) de un jugador y ponle esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Lid/6+> Recibes 1mo, [Controlar el burdel] y elimina esta carta",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Nav/6+> Recibes 1mo, [Liquidar bienes] y elimina esta carta",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Neg/5+> Recibes 1mo, <+1PV> y elimina esta carta",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Neg/5+> Coge [Barco] y elimina esta carta",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Neg/6+> Coge 2mo, <+1PV>, elimina esta carta y ponle [Promocionar a capitán] a otro personaje",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO6> Mercancia!",
+    "ActionSuccess": "Neg/8+> Coge [Desordenes en Nassau], [Puesto comercial] y elimina esta carta",
+    "Failure": "Elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Barco",
+    "ActionSuccess": "Nav/8+> Coge [Abordando barco mercante]",
+    "Failure": "Ponle [Promocionar a capitán] a otro personaje",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Barco",
+    "ActionSuccess": "Nav/9+> Coge [Abordando barco mercante]",
+    "Failure": "Tira un dado si sacas 5+ coge [Carenando barco]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Barco",
+    "ActionSuccess": "Obs/6+> Si no tienes [Tripulación desfavorable] cógela junto con una [Mercancia]",
+    "Failure": "Coge [Denunciado por piratería] y tira un dado si sacas 5+ coge [Carenando barco]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Cañones largo alcance#",
+    "ActionSuccess": "Baj/7+ (Elige un personaje con Barco)> Coge su [Barco], [Carenando barco] y <+1Baj>",
+    "Failure": "Coge [Herido] y elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Cañones largo alcance#",
+    "ActionSuccess": "Fue/7+> Coge una localización y [Reparando daños inmuebles]",
+    "Failure": "Coge [Apresado en la carcel de Nassau]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsPO",
+    "Title": "PO> Cañones largo alcance#",
+    "ActionSuccess": "Fue/7+> Si tienes [Fortaleza] coge [Desordenes en Nassau]",
+    "Failure": "Ponle [Cambiar de propietario] a otro personaje",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/5+ (tirada sin modificar)> Tira un dado, si sacas 4+ elimina esta carta",
+    "Failure": "Elimina tu personaje con todas las cartas que posea y coge otro al azar",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/5+ (tirada sin modificar)> Tira un dado, si sacas 4+ elimina esta carta",
+    "Failure": "Elimina tu personaje con todas las cartas que posea y coge otro al azar",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/7+ (tirada sin modificar)> Tira un dado, si sacas 5+ elimina esta carta",
+    "Failure": "Coge [Marcado con terribles cicatrices] si no la tienes y elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/7+ (tirada sin modificar)> Tira un dado, si sacas 5+ elimina esta carta",
+    "Failure": "Coge [Vengar afrenta] si no la tienes y elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/9+ (tirada sin modificar)> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero aplicando un -1Fue y -1Nav",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S6*> Herido",
+    "ActionSuccess": "Fue/9+ (tirada sin modificar)> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero aplicando un -2Fue",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Alcoholizado",
+    "ActionSuccess": "Baj/8+> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero aplicando un -2Fue y -1Nav",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Alcoholizado",
+    "ActionSuccess": "Lid/7+> Elimina esta carta y coge [Conseguir parte del mapa]",
+    "Failure": "Puedes hacer otra acción pero aplicando un -1Fue y -2Obs",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Alcoholizado",
+    "ActionSuccess": "Obs/9+> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero aplicando un -1Fue y -2Neg",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Apresado en la carcel de Nassau",
+    "ActionSuccess": "Baj/8+> Elimina esta carta",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Apresado en la carcel de Nassau",
+    "ActionSuccess": "Lid/6+ (Paga 1mo)> Elimina esta carta y coge [Conseguir parte del mapa]",
+    "Failure": "Coge [Herido]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Apresado en la carcel de Nassau",
+    "ActionSuccess": "Neg/6+ (Paga 1mo)> Elimina esta carta",
+    "Failure": "Coge [Tener un affaire] y [Marcado con terribles cicatrices]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Carenando barco#",
+    "ActionSuccess": "Baj/8+> Elimina esta carta y coge [Denunciado por piratería]",
+    "Failure": "Tienes [Barco] cancelado pero puedes hacer tu acción",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Carenando barco#",
+    "ActionSuccess": "Nav/9+> Elimina esta carta",
+    "Failure": "Tienes [Barco] cancelado pero puedes hacer tu acción",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Carenando barco#",
+    "ActionSuccess": "Neg/6+ (Paga 1mo)> Elimina esta carta y ganas <+1Obs>",
+    "Failure": "Tienes [Barco] cancelado. Puedes coger [Tripulación desfavorable] para ganar 1mo",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Denunciado por piratería",
+    "ActionSuccess": "Lid/7+> Elimina esta acción",
+    "Failure": "Paga 1mo o coge [Apresado en la carcel de Nassau]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Denunciado por piratería",
+    "ActionSuccess": "Lid/8+> Elimina esta acción y coge [Liquidar bienes]",
+    "Failure": "Coge [Herido]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Denunciado por piratería",
+    "ActionSuccess": "Neg/8+> Pon una de tus Localizaciones sobre otro personaje junto con esta carta",
+    "Failure": "Coge [Señalado como ladrón]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Marcado con terribles cicatrices",
+    "ActionSuccess": "Puedes hacer otra acción pero aplicando un -1Fue",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Marcado con terribles cicatrices",
+    "ActionSuccess": "Puedes hacer otra acción pero aplicando un -1Neg",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Marcado con terribles cicatrices",
+    "ActionSuccess": "Puedes hacer otra acción pero aplicando un -2Lid",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Peleando en la taberna",
+    "ActionSuccess": "Baj/6+> Coge [Taberna] y [Conseguir parte del mapa]",
+    "Failure": "",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Peleando en la taberna",
+    "ActionSuccess": "Fue/8+> Coge [Promocionar a capitán] y [Tener un affaire]",
+    "Failure": "Coge [Herido]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S> Peleando en la taberna",
+    "ActionSuccess": "Lid/9+> Coge [Mercancia] y [Tener un affaire]",
+    "Failure": "Paga 1mo o coge [Apresado en la carcel de Nassau]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Abordando barco mercante",
+    "ActionSuccess": "Fue/7+ (Aplica +1 si tienes Cañones de largo alcance)> Coge 2x[Mercancia] y elimina esta carta",
+    "Failure": "Coge [Herido]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Abordando barco mercante",
+    "ActionSuccess": "Fue/8+ (Aplica +1 si tienes Cañones de largo alcance)> Coge 3x[Mercancia] y elimina esta carta",
+    "Failure": "Ponle esta carta a otro personaje con [Barco]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Abordando barco mercante",
+    "ActionSuccess": "Obs/5+> Coge [Mercancia] y elimina esta carta",
+    "Failure": "Coge [Herido]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Reparando daños inmuebles",
+    "ActionSuccess": "Lid/10+ (Puedes pagar 1mo y aplicar +2 a la tirada)> Elimina esta carta",
+    "Failure": "Ningún personaje puede usar [Mercancia]",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Reparando daños inmuebles",
+    "ActionSuccess": "Lid/10+ (Puedes pagar 1mo y aplicar +2 a la tirada)> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero no usar Localizaciones",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Reparando daños inmuebles",
+    "ActionSuccess": "Neg/8+ (Puedes pagar 1mo y aplicar +2 a la tirada)> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero no usar Localizaciones",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Señalado como ladrón",
+    "ActionSuccess": "Baj/8+> Recibes 1mo",
+    "Failure": "Coge [Marcado con terribles cicatrices] y elimina esta carta",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Señalado como ladrón",
+    "ActionSuccess": "Lid/7+> Elimina esta carta",
+    "Failure": "Coge [Apresado en la carcel de Nassau] si no la tienes",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Señalado como ladrón",
+    "ActionSuccess": "Neg/5+ (Paga 1mo)> Elimina esta acción",
+    "Failure": "Coge [Apresado en la carcel de Nassau] si no la tienes",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Tripulación desfavorable",
+    "ActionSuccess": "Baj/5+ (Paga 1mo)> Elimina esta carta",
+    "Failure": "Puedes hacer otra acción pero aplicando un -1Nav y -1FUE",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Tripulación desfavorable",
+    "ActionSuccess": "Lid/6+> Puedes hacer otra acción pero aplicando un -2Baj",
+    "Failure": "Coge [Peleando en la taberna] si no la tienes",
+    "ExtraInfo": ""
+  },
+  {
+    "Header": "BaseBlackSailsS",
+    "Title": "S*> Tripulación desfavorable",
+    "ActionSuccess": "Obs/6+> Puedes hacer otra acción pero aplicando un -2Nav",
+    "Failure": "Coge [Alcoholizado] si no la tienes",
+    "ExtraInfo": ""
+  }
+]
